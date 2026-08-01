@@ -48,59 +48,59 @@ export default function StageLayoutCalculator({
   };
 
   return (
-    <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-8">
+    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-8">
       {/* 画面ヘッダー */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="inline-flex items-center gap-1.5 bg-purple-500/10 text-purple-400 text-xs font-bold px-3 py-1 rounded-full mb-2 border border-purple-500/20">
+          <div className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full mb-2 border border-blue-200">
             <Layers className="w-3.5 h-3.5" /> 実行委員サポート
           </div>
-          <h2 className="text-xl font-bold text-white">舞台配置 ＆ ひな壇・椅子・譜面台 自動計算</h2>
+          <h2 className="text-xl font-bold text-slate-900">舞台配置 ＆ ひな壇・椅子・譜面台 自動計算</h2>
         </div>
 
-        <div className="bg-slate-950 px-4 py-2 rounded-xl border border-slate-800 text-xs text-slate-300">
-          合計乗戦奏者数: <span className="text-purple-400 font-extrabold text-sm">{totalPlayers}名</span>
+        <div className="bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 text-xs text-slate-700">
+          合計乗戦奏者数: <span className="text-blue-700 font-extrabold text-sm">{totalPlayers}名</span>
         </div>
       </div>
 
       {/* 自動計算結果サマリーカード */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-gradient-to-br from-purple-950/40 to-slate-950 border border-purple-500/30 rounded-xl p-4 text-center">
-          <span className="text-xs text-purple-300 font-semibold block mb-1">椅子（必要脚数）</span>
-          <span className="text-3xl font-black text-white">{totalChairs}</span>
-          <span className="text-[11px] text-slate-400 block mt-1">
+        <div className="bg-gradient-to-br from-purple-950/40 to-slate-950 border border-blue-200 rounded-xl p-4 text-center">
+          <span className="text-xs text-blue-700 font-semibold block mb-1">椅子（必要脚数）</span>
+          <span className="text-3xl font-bold text-slate-900">{totalChairs}</span>
+          <span className="text-[11px] text-slate-600 block mt-1">
             管打 {woodwindsCount + brassCount + percussionCount}脚 / 弦 {stringChairs}脚
           </span>
         </div>
 
         <div className="bg-gradient-to-br from-indigo-950/40 to-slate-950 border border-indigo-500/30 rounded-xl p-4 text-center">
-          <span className="text-xs text-indigo-300 font-semibold block mb-1">譜面台（必要台数）</span>
-          <span className="text-3xl font-black text-white">{totalStands}</span>
-          <span className="text-[11px] text-slate-400 block mt-1">
+          <span className="text-xs text-blue-700 font-semibold block mb-1">譜面台（必要台数）</span>
+          <span className="text-3xl font-bold text-slate-900">{totalStands}</span>
+          <span className="text-[11px] text-slate-600 block mt-1">
             管打 {windStands}台 / 弦 {stringStands}台 (プルト数)
           </span>
         </div>
 
-        <div className="bg-gradient-to-br from-emerald-950/40 to-slate-950 border border-emerald-500/30 rounded-xl p-4 text-center">
-          <span className="text-xs text-emerald-300 font-semibold block mb-1">ひな壇段数 ＆ 2m×1m箱数</span>
-          <span className="text-3xl font-black text-white">3 段</span>
-          <span className="text-[11px] text-slate-400 block mt-1">
+        <div className="bg-gradient-to-br from-emerald-950/40 to-slate-950 border border-emerald-200 rounded-xl p-4 text-center">
+          <span className="text-xs text-emerald-700 font-semibold block mb-1">ひな壇段数 ＆ 2m×1m箱数</span>
+          <span className="text-3xl font-bold text-slate-900">3 段</span>
+          <span className="text-[11px] text-slate-600 block mt-1">
             計 {tierBoxes.tier1 + tierBoxes.tier2 + tierBoxes.tier3}箱 (20/40/60cm)
           </span>
         </div>
       </div>
 
       {/* パラメーター調整スライダー ＆ 設定 */}
-      <div className="bg-slate-950/60 p-5 rounded-xl border border-slate-800 space-y-4">
-        <h3 className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
-          <Sliders className="w-4 h-4 text-blue-400" />
+      <div className="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
+        <h3 className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
+          <Sliders className="w-4 h-4 text-blue-700" />
           当日の出席人数 / プルト数パラメータ
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
           {/* 管・打楽器数 */}
-          <div className="space-y-3 bg-slate-900/60 p-4 rounded-lg border border-slate-800">
-            <span className="font-bold text-blue-400 block border-b border-slate-800 pb-1">
+          <div className="space-y-3 bg-slate-900/60 p-4 rounded-lg border border-slate-200">
+            <span className="font-bold text-blue-700 block border-b border-slate-200 pb-1">
               管打楽器 出席奏者数
             </span>
 
@@ -109,14 +109,14 @@ export default function StageLayoutCalculator({
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setWoodwindsCount(Math.max(1, woodwindsCount - 1))}
-                  className="w-6 h-6 bg-slate-800 rounded font-bold"
+                  className="w-6 h-6 bg-slate-100 rounded font-bold"
                 >
                   -
                 </button>
-                <span className="font-mono text-sm text-white w-6 text-center">{woodwindsCount}</span>
+                <span className="font-mono text-sm text-slate-900 w-6 text-center">{woodwindsCount}</span>
                 <button
                   onClick={() => setWoodwindsCount(woodwindsCount + 1)}
-                  className="w-6 h-6 bg-slate-800 rounded font-bold"
+                  className="w-6 h-6 bg-slate-100 rounded font-bold"
                 >
                   +
                 </button>
@@ -128,12 +128,12 @@ export default function StageLayoutCalculator({
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setBrassCount(Math.max(1, brassCount - 1))}
-                  className="w-6 h-6 bg-slate-800 rounded font-bold"
+                  className="w-6 h-6 bg-slate-100 rounded font-bold"
                 >
                   -
                 </button>
-                <span className="font-mono text-sm text-white w-6 text-center">{brassCount}</span>
-                <button onClick={() => setBrassCount(brassCount + 1)} className="w-6 h-6 bg-slate-800 rounded font-bold">
+                <span className="font-mono text-sm text-slate-900 w-6 text-center">{brassCount}</span>
+                <button onClick={() => setBrassCount(brassCount + 1)} className="w-6 h-6 bg-slate-100 rounded font-bold">
                   +
                 </button>
               </div>
@@ -144,14 +144,14 @@ export default function StageLayoutCalculator({
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setPercussionCount(Math.max(1, percussionCount - 1))}
-                  className="w-6 h-6 bg-slate-800 rounded font-bold"
+                  className="w-6 h-6 bg-slate-100 rounded font-bold"
                 >
                   -
                 </button>
-                <span className="font-mono text-sm text-white w-6 text-center">{percussionCount}</span>
+                <span className="font-mono text-sm text-slate-900 w-6 text-center">{percussionCount}</span>
                 <button
                   onClick={() => setPercussionCount(percussionCount + 1)}
-                  className="w-6 h-6 bg-slate-800 rounded font-bold"
+                  className="w-6 h-6 bg-slate-100 rounded font-bold"
                 >
                   +
                 </button>
@@ -160,31 +160,31 @@ export default function StageLayoutCalculator({
           </div>
 
           {/* 弦楽器プルト数 */}
-          <div className="space-y-3 bg-slate-900/60 p-4 rounded-lg border border-slate-800">
-            <span className="font-bold text-amber-400 block border-b border-slate-800 pb-1">
+          <div className="space-y-3 bg-slate-900/60 p-4 rounded-lg border border-slate-200">
+            <span className="font-bold text-amber-700 block border-b border-slate-200 pb-1">
               弦楽器 プルト数 (1プルト=2名)
             </span>
 
             <div className="grid grid-cols-2 gap-2">
-              <div className="flex justify-between items-center bg-slate-950 p-2 rounded">
+              <div className="flex justify-between items-center bg-slate-50 p-2 rounded">
                 <span>Vn1:</span>
-                <span className="font-mono text-white font-bold">{vn1Desks} プルト</span>
+                <span className="font-mono text-slate-900 font-bold">{vn1Desks} プルト</span>
               </div>
-              <div className="flex justify-between items-center bg-slate-950 p-2 rounded">
+              <div className="flex justify-between items-center bg-slate-50 p-2 rounded">
                 <span>Vn2:</span>
-                <span className="font-mono text-white font-bold">{vn2Desks} プルト</span>
+                <span className="font-mono text-slate-900 font-bold">{vn2Desks} プルト</span>
               </div>
-              <div className="flex justify-between items-center bg-slate-950 p-2 rounded">
+              <div className="flex justify-between items-center bg-slate-50 p-2 rounded">
                 <span>Vla:</span>
-                <span className="font-mono text-white font-bold">{vaDesks} プルト</span>
+                <span className="font-mono text-slate-900 font-bold">{vaDesks} プルト</span>
               </div>
-              <div className="flex justify-between items-center bg-slate-950 p-2 rounded">
+              <div className="flex justify-between items-center bg-slate-50 p-2 rounded">
                 <span>Vc:</span>
-                <span className="font-mono text-white font-bold">{vcDesks} プルト</span>
+                <span className="font-mono text-slate-900 font-bold">{vcDesks} プルト</span>
               </div>
-              <div className="flex justify-between items-center bg-slate-950 p-2 rounded col-span-2">
+              <div className="flex justify-between items-center bg-slate-50 p-2 rounded col-span-2">
                 <span>Contrabass:</span>
-                <span className="font-mono text-white font-bold">{cbDesks} プルト ({cbDesks * 2}名)</span>
+                <span className="font-mono text-slate-900 font-bold">{cbDesks} プルト ({cbDesks * 2}名)</span>
               </div>
             </div>
           </div>
@@ -192,9 +192,9 @@ export default function StageLayoutCalculator({
       </div>
 
       {/* 2D インタラクティブ 舞台配置プレビュー図 */}
-      <div className="bg-slate-950 border border-slate-800 rounded-xl p-6 relative overflow-hidden">
+      <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 relative overflow-hidden">
         <div className="flex justify-between items-center mb-4">
-          <span className="text-xs font-bold text-purple-400 flex items-center gap-1.5">
+          <span className="text-xs font-bold text-blue-700 flex items-center gap-1.5">
             <LayoutGrid className="w-4 h-4" />
             2D 舞台配置 扇形マップ
           </span>
@@ -202,14 +202,14 @@ export default function StageLayoutCalculator({
         </div>
 
         {/* 舞台ビジュアル図 */}
-        <div className="relative w-full h-[360px] bg-slate-900/80 rounded-xl border border-slate-800/80 p-4 flex flex-col items-center justify-between overflow-hidden">
+        <div className="relative w-full h-[360px] bg-slate-50 rounded-xl border border-slate-200 p-4 flex flex-col items-center justify-between overflow-hidden">
           {/* 指揮台 */}
-          <div className="w-20 h-10 bg-amber-600/30 border border-amber-500 rounded-lg flex items-center justify-center text-[10px] font-bold text-amber-300 shadow-md">
+          <div className="w-20 h-10 bg-amber-600/30 border border-amber-500 rounded-lg flex items-center justify-center text-[10px] font-bold text-amber-700 shadow-md">
             指揮台
           </div>
 
           {/* 1層目: 弦楽器 扇形 */}
-          <div className="w-full flex justify-around items-center px-4 text-[10px] font-bold text-slate-300 z-10">
+          <div className="w-full flex justify-around items-center px-4 text-[10px] font-bold text-slate-700 z-10">
             <div className="bg-amber-500/20 border border-amber-500/40 px-3 py-2 rounded-xl text-center">
               1st Violin ({vn1Desks * 2}名)
             </div>
@@ -225,22 +225,22 @@ export default function StageLayoutCalculator({
           </div>
 
           {/* 2層目: 木管楽器 (ひな壇1段目: 高20cm) */}
-          <div className="w-4/5 bg-blue-950/60 border border-blue-500/40 py-2 rounded-xl text-center text-[11px] font-bold text-blue-300 shadow">
+          <div className="w-4/5 bg-blue-950/60 border border-blue-500/40 py-2 rounded-xl text-center text-[11px] font-bold text-blue-700 shadow">
             【ひな壇 1段目 H=20cm】 木管パート ({woodwindsCount}名 / Fl, Ob, Cl, Fg)
           </div>
 
           {/* 3層目: 金管楽器 ＆ コントラバス (ひな壇2段目: 高40cm) */}
           <div className="w-11/12 flex justify-between items-center gap-2 text-[11px] font-bold">
-            <div className="bg-orange-950/60 border border-orange-500/40 py-2 px-6 rounded-xl text-center text-orange-300 flex-1">
+            <div className="bg-amber-50 border border-amber-200 py-2 px-6 rounded-xl text-center text-amber-700 flex-1">
               【ひな壇 2段目 H=40cm】 金管パート ({brassCount}名 / Hr, Tp, Tb, Tuba)
             </div>
-            <div className="bg-amber-950/60 border border-amber-500/40 py-2 px-4 rounded-xl text-center text-amber-300">
+            <div className="bg-amber-950/60 border border-amber-500/40 py-2 px-4 rounded-xl text-center text-amber-700">
               CB ({cbDesks * 2}名)
             </div>
           </div>
 
           {/* 4層目: 打楽器・ティンパニ (ひな壇3段目: 高60cm) */}
-          <div className="w-3/5 bg-purple-950/70 border border-purple-500/50 py-2 rounded-xl text-center text-[11px] font-bold text-purple-300 shadow-lg">
+          <div className="w-3/5 bg-purple-950/70 border border-purple-500/50 py-2 rounded-xl text-center text-[11px] font-bold text-blue-700 shadow-sm">
             【ひな壇 3段目 H=60cm】 ティンパニ ＆ 打楽器 ({percussionCount}名)
           </div>
         </div>
