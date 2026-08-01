@@ -167,7 +167,7 @@ export default function AiInspectorPlanner({
       {/* ヘッダー */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div className="flex items-center gap-3">
-          <div className="bg-blue-600 text-slate-900 p-3 rounded-2xl shadow-sm">
+          <div className="bg-blue-50 text-blue-600 p-3 rounded-2xl border border-blue-200">
             <Bot className="w-6 h-6 animate-pulse" />
           </div>
           <div>
@@ -239,7 +239,7 @@ export default function AiInspectorPlanner({
           <button
             onClick={() => handleGeneratePlan(true)}
             disabled={isGenerating}
-            className="flex-1 w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:opacity-90 text-slate-900 font-bold text-xs py-3 rounded-xl shadow-sm shadow-indigo-600/30 transition"
+            className="flex-1 w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-3 rounded-xl shadow-sm transition"
           >
             {isGenerating ? (
               <span className="flex items-center gap-2">
@@ -248,7 +248,7 @@ export default function AiInspectorPlanner({
               </span>
             ) : (
               <>
-                <MessageSquare className="w-4 h-4 text-emerald-700" />
+                <MessageSquare className="w-4 h-4 text-white/90" />
                 指導陣フィードバックを反映してAI再計算・最適化
               </>
             )}
@@ -267,7 +267,7 @@ export default function AiInspectorPlanner({
 
             <button
               onClick={() => alert('オケカンのスケジュールデータベースに一括反映しました！')}
-              className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-slate-900 font-bold text-xs px-3.5 py-2 rounded-xl shadow transition"
+              className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow transition"
             >
               <CheckCircle2 className="w-3.5 h-3.5" />
               この計画を「オケカン」の日程に反映する
@@ -282,7 +282,7 @@ export default function AiInspectorPlanner({
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
                   <div className="flex items-center gap-3">
-                    <span className="w-7 h-7 rounded-xl bg-blue-600 text-slate-900 font-bold text-xs flex items-center justify-center">
+                    <span className="w-7 h-7 rounded-xl bg-blue-600 text-white font-bold text-xs flex items-center justify-center">
                       #{plan.sessionNumber}
                     </span>
                     <div>
@@ -294,7 +294,7 @@ export default function AiInspectorPlanner({
                   {plan.hasExtraNeed && (
                     <Link
                       href={`/rehakuru?part=${encodeURIComponent(plan.extraPart || '')}`}
-                      className="inline-flex items-center gap-1 bg-amber-50 hover:bg-orange-500/20 text-amber-700 border border-amber-200 px-3 py-1 rounded-lg text-xs font-bold transition w-fit"
+                      className="inline-flex items-center gap-1 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 px-3 py-1 rounded-lg text-xs font-bold transition w-fit"
                     >
                       <UserPlus className="w-3.5 h-3.5" />
                       {plan.extraPart} エキストラ要手配 (リハクルへ)
@@ -304,8 +304,8 @@ export default function AiInspectorPlanner({
 
                 {/* 反映された指導指示ハイライト */}
                 {plan.appliedFeedbacks && plan.appliedFeedbacks.length > 0 && (
-                  <div className="bg-purple-950/30 border border-blue-200 p-2.5 rounded-xl text-xs space-y-1">
-                    <span className="font-bold text-blue-700 flex items-center gap-1">
+                  <div className="bg-purple-50 border border-purple-200 p-2.5 rounded-xl text-xs space-y-1">
+                    <span className="font-bold text-purple-700 flex items-center gap-1">
                       <Sparkles className="w-3.5 h-3.5" /> 指導陣フィードバック自動反映項目:
                     </span>
                     <ul className="list-disc list-inside text-slate-700 text-[11px]">
@@ -323,8 +323,8 @@ export default function AiInspectorPlanner({
                       key={idx}
                       className={`p-3 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-2 ${
                         slot.activity.includes('指示')
-                          ? 'bg-purple-950/40 border-purple-500/40'
-                          : 'bg-slate-900/70 border-slate-200'
+                          ? 'bg-purple-50/50 border-purple-200'
+                          : 'bg-slate-50 border-slate-200'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -342,7 +342,7 @@ export default function AiInspectorPlanner({
                 </div>
 
                 {/* AIインペクのアドバイス */}
-                <div className="bg-blue-950/40 border border-blue-200 p-3 rounded-xl text-xs text-blue-700 flex items-start gap-2">
+                <div className="bg-blue-50 border border-blue-200 p-3 rounded-xl text-xs text-blue-700 flex items-start gap-2">
                   <Bot className="w-4 h-4 shrink-0 text-blue-700 mt-0.5" />
                   <span>{plan.aiAdvice}</span>
                 </div>

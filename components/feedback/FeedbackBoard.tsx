@@ -123,7 +123,7 @@ export default function FeedbackBoard({
     <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div className="flex items-center gap-3">
-          <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-slate-900 p-2.5 rounded-xl shadow-sm">
+          <div className="bg-indigo-500 text-white p-2.5 rounded-xl shadow-sm">
             <MessageSquarePlus className="w-5 h-5" />
           </div>
           <div>
@@ -134,7 +134,7 @@ export default function FeedbackBoard({
 
         <button
           onClick={handleTriggerAiOptimization}
-          className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:opacity-90 text-slate-900 font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm shadow-indigo-600/30 transition"
+          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition"
         >
           <Sparkles className="w-4 h-4" />
           フィードバックをAIインペクの練習計画に反映・自動再調整
@@ -224,7 +224,7 @@ export default function FeedbackBoard({
         <div className="text-right">
           <button
             type="submit"
-            className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-slate-900 font-bold px-4 py-2 rounded-lg transition"
+            className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-lg transition"
           >
             <Send className="w-3.5 h-3.5" />
             フィードバックを投稿する
@@ -244,19 +244,19 @@ export default function FeedbackBoard({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <span
-                  className={`text-[10px] font-bold px-2.5 py-0.5 rounded ${
+                  className={`text-[10px] font-bold px-2.5 py-0.5 rounded border ${
                     item.role === 'concertmaster'
-                      ? 'bg-amber-500/20 text-amber-700 border border-amber-500/30'
+                      ? 'bg-amber-50 text-amber-700 border-amber-200'
                       : item.role === 'conductor'
-                      ? 'bg-purple-500/20 text-blue-700 border border-blue-200'
-                      : 'bg-blue-500/20 text-blue-700 border border-blue-200'
+                      ? 'bg-purple-50 text-purple-700 border-purple-200'
+                      : 'bg-blue-50 text-blue-700 border-blue-200'
                   }`}
                 >
                   {item.authorName}
                 </span>
 
                 {item.priority === 'high' && (
-                  <span className="bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[10px] font-bold px-2 py-0.5 rounded">
+                  <span className="bg-rose-50 text-rose-700 border border-rose-200 text-[10px] font-bold px-2 py-0.5 rounded">
                     🔴 最優先
                   </span>
                 )}
@@ -277,7 +277,7 @@ export default function FeedbackBoard({
               <span className="text-blue-700 ml-2 font-medium">[{item.categoryLabel}]</span>
             </div>
 
-            <p className="text-xs text-slate-800 leading-relaxed bg-slate-900/60 p-3 rounded-lg border border-slate-200">
+            <p className="text-xs text-slate-800 leading-relaxed bg-slate-100/50 p-3 rounded-lg border border-slate-200">
               {item.content}
             </p>
           </div>
