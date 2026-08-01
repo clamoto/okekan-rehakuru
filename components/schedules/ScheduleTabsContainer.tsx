@@ -173,6 +173,7 @@ export default function ScheduleTabsContainer({ scheduleId, scheduleDetails }: S
               scheduleId={scheduleId}
               scheduleTitle={scheduleDetails.title}
               dateStr={scheduleDetails.dateStr}
+              pieces={scheduleDetails.pieces}
             />
           </div>
         )}
