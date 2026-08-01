@@ -35,7 +35,7 @@ export default function TimelineGenerator() {
 
         <button
           onClick={() => alert('タイムスケジュールPDFを出力しました。')}
-          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-slate-900 font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition"
+          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition"
         >
           <Download className="w-4 h-4" />
           進行表PDFをダウンロード
@@ -84,17 +84,17 @@ export default function TimelineGenerator() {
             key={idx}
             className="relative bg-slate-50 border border-slate-200 p-4 rounded-xl transition hover:border-slate-300"
           >
-            <div className="absolute -left-8 top-4 w-3.5 h-3.5 rounded-full bg-blue-500 ring-4 ring-slate-900"></div>
+            <div className="absolute -left-8 top-4 w-3.5 h-3.5 rounded-full bg-blue-500 ring-4 ring-white"></div>
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <span className="font-mono text-xs font-bold text-blue-700">{item.time}</span>
               <span
-                className={`text-[10px] px-2 py-0.5 rounded font-bold w-fit ${
+                className={`text-[10px] px-2 py-0.5 rounded font-bold w-fit border ${
                   item.category === 'event'
-                    ? 'bg-amber-500/20 text-amber-700 border border-amber-500/30'
+                    ? 'bg-amber-50 text-amber-700 border-amber-200'
                     : item.category === 'practice'
-                    ? 'bg-purple-500/20 text-blue-700 border border-blue-200'
-                    : 'bg-slate-100 text-slate-600'
+                    ? 'bg-purple-50 text-purple-700 border-purple-200'
+                    : 'bg-slate-100 text-slate-600 border-slate-200'
                 }`}
               >
                 {item.category === 'event' ? '本番 / 開場' : item.category === 'practice' ? 'ゲネプロ' : '設営・準備'}

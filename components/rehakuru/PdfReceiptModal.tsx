@@ -90,7 +90,7 @@ export default function PdfReceiptModal({ offerData, onClose }: PdfReceiptModalP
           <div className="flex items-center gap-2">
             <button
               onClick={() => alert('PDF領収書をダウンロードしました。')}
-              className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-slate-900 font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition"
+              className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition"
             >
               <Download className="w-4 h-4" />
               PDF領収書をダウンロード
