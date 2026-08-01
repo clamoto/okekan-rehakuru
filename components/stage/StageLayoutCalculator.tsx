@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Layers, Sliders, CheckCircle2, Info, LayoutGrid } from 'lucide-react';
+import StageLayoutCanvas from './StageLayoutCanvas';
 
 interface StageLayoutCalculatorProps {
   initialAttendingCount?: number;
@@ -109,14 +110,14 @@ export default function StageLayoutCalculator({
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setWoodwindsCount(Math.max(1, woodwindsCount - 1))}
-                  className="w-6 h-6 bg-slate-100 rounded font-bold"
+                  className="w-6 h-6 bg-slate-100 rounded font-bold hover:bg-slate-200"
                 >
                   -
                 </button>
                 <span className="font-mono text-sm text-slate-900 w-6 text-center">{woodwindsCount}</span>
                 <button
                   onClick={() => setWoodwindsCount(woodwindsCount + 1)}
-                  className="w-6 h-6 bg-slate-100 rounded font-bold"
+                  className="w-6 h-6 bg-slate-100 rounded font-bold hover:bg-slate-200"
                 >
                   +
                 </button>
@@ -128,12 +129,12 @@ export default function StageLayoutCalculator({
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setBrassCount(Math.max(1, brassCount - 1))}
-                  className="w-6 h-6 bg-slate-100 rounded font-bold"
+                  className="w-6 h-6 bg-slate-100 rounded font-bold hover:bg-slate-200"
                 >
                   -
                 </button>
                 <span className="font-mono text-sm text-slate-900 w-6 text-center">{brassCount}</span>
-                <button onClick={() => setBrassCount(brassCount + 1)} className="w-6 h-6 bg-slate-100 rounded font-bold">
+                <button onClick={() => setBrassCount(brassCount + 1)} className="w-6 h-6 bg-slate-100 rounded font-bold hover:bg-slate-200">
                   +
                 </button>
               </div>
@@ -144,14 +145,14 @@ export default function StageLayoutCalculator({
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setPercussionCount(Math.max(1, percussionCount - 1))}
-                  className="w-6 h-6 bg-slate-100 rounded font-bold"
+                  className="w-6 h-6 bg-slate-100 rounded font-bold hover:bg-slate-200"
                 >
                   -
                 </button>
                 <span className="font-mono text-sm text-slate-900 w-6 text-center">{percussionCount}</span>
                 <button
                   onClick={() => setPercussionCount(percussionCount + 1)}
-                  className="w-6 h-6 bg-slate-100 rounded font-bold"
+                  className="w-6 h-6 bg-slate-100 rounded font-bold hover:bg-slate-200"
                 >
                   +
                 </button>
@@ -168,82 +169,61 @@ export default function StageLayoutCalculator({
             <div className="grid grid-cols-2 gap-2">
               <div className="flex justify-between items-center bg-slate-50 p-2 rounded">
                 <span>Vn1:</span>
-                <span className="font-mono text-slate-900 font-bold">{vn1Desks} プルト</span>
+                <div className="flex items-center gap-1.5">
+                  <button onClick={() => setVn1Desks(Math.max(1, vn1Desks - 1))} className="w-5 h-5 bg-slate-200/60 hover:bg-slate-200 font-bold rounded text-xs">-</button>
+                  <span className="font-mono text-slate-900 font-bold w-4 text-center">{vn1Desks}</span>
+                  <button onClick={() => setVn1Desks(vn1Desks + 1)} className="w-5 h-5 bg-slate-200/60 hover:bg-slate-200 font-bold rounded text-xs">+</button>
+                </div>
               </div>
               <div className="flex justify-between items-center bg-slate-50 p-2 rounded">
                 <span>Vn2:</span>
-                <span className="font-mono text-slate-900 font-bold">{vn2Desks} プルト</span>
+                <div className="flex items-center gap-1.5">
+                  <button onClick={() => setVn2Desks(Math.max(1, vn2Desks - 1))} className="w-5 h-5 bg-slate-200/60 hover:bg-slate-200 font-bold rounded text-xs">-</button>
+                  <span className="font-mono text-slate-900 font-bold w-4 text-center">{vn2Desks}</span>
+                  <button onClick={() => setVn2Desks(vn2Desks + 1)} className="w-5 h-5 bg-slate-200/60 hover:bg-slate-200 font-bold rounded text-xs">+</button>
+                </div>
               </div>
               <div className="flex justify-between items-center bg-slate-50 p-2 rounded">
                 <span>Vla:</span>
-                <span className="font-mono text-slate-900 font-bold">{vaDesks} プルト</span>
+                <div className="flex items-center gap-1.5">
+                  <button onClick={() => setVaDesks(Math.max(1, vaDesks - 1))} className="w-5 h-5 bg-slate-200/60 hover:bg-slate-200 font-bold rounded text-xs">-</button>
+                  <span className="font-mono text-slate-900 font-bold w-4 text-center">{vaDesks}</span>
+                  <button onClick={() => setVaDesks(vaDesks + 1)} className="w-5 h-5 bg-slate-200/60 hover:bg-slate-200 font-bold rounded text-xs">+</button>
+                </div>
               </div>
               <div className="flex justify-between items-center bg-slate-50 p-2 rounded">
                 <span>Vc:</span>
-                <span className="font-mono text-slate-900 font-bold">{vcDesks} プルト</span>
+                <div className="flex items-center gap-1.5">
+                  <button onClick={() => setVcDesks(Math.max(1, vcDesks - 1))} className="w-5 h-5 bg-slate-200/60 hover:bg-slate-200 font-bold rounded text-xs">-</button>
+                  <span className="font-mono text-slate-900 font-bold w-4 text-center">{vcDesks}</span>
+                  <button onClick={() => setVcDesks(vcDesks + 1)} className="w-5 h-5 bg-slate-200/60 hover:bg-slate-200 font-bold rounded text-xs">+</button>
+                </div>
               </div>
               <div className="flex justify-between items-center bg-slate-50 p-2 rounded col-span-2">
                 <span>Contrabass:</span>
-                <span className="font-mono text-slate-900 font-bold">{cbDesks} プルト ({cbDesks * 2}名)</span>
+                <div className="flex items-center gap-1.5">
+                  <button onClick={() => setCbDesks(Math.max(1, cbDesks - 1))} className="w-5 h-5 bg-slate-200/60 hover:bg-slate-200 font-bold rounded text-xs">-</button>
+                  <span className="font-mono text-slate-900 font-bold w-12 text-center">{cbDesks} P ({cbDesks * 2}名)</span>
+                  <button onClick={() => setCbDesks(cbDesks + 1)} className="w-5 h-5 bg-slate-200/60 hover:bg-slate-200 font-bold rounded text-xs">+</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* 2D インタラクティブ 舞台配置プレビュー図 */}
-      <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 relative overflow-hidden">
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-xs font-bold text-blue-700 flex items-center gap-1.5">
-            <LayoutGrid className="w-4 h-4" />
-            2D 舞台配置 扇形マップ
-          </span>
-          <span className="text-[10px] text-slate-500 font-mono">客席側から見下ろした図</span>
-        </div>
-
-        {/* 舞台ビジュアル図 */}
-        <div className="relative w-full h-[360px] bg-slate-50 rounded-xl border border-slate-200 p-4 flex flex-col items-center justify-between overflow-hidden">
-          {/* 指揮台 */}
-          <div className="w-20 h-10 bg-amber-600/30 border border-amber-500 rounded-lg flex items-center justify-center text-[10px] font-bold text-amber-700 shadow-md">
-            指揮台
-          </div>
-
-          {/* 1層目: 弦楽器 扇形 */}
-          <div className="w-full flex justify-around items-center px-4 text-[10px] font-bold text-slate-700 z-10">
-            <div className="bg-amber-50 border border-amber-200 px-3 py-2 rounded-xl text-center text-amber-700">
-              1st Violin ({vn1Desks * 2}名)
-            </div>
-            <div className="bg-amber-50 border border-amber-200 px-3 py-2 rounded-xl text-center text-amber-700">
-              2nd Violin ({vn2Desks * 2}名)
-            </div>
-            <div className="bg-amber-50 border border-amber-200 px-3 py-2 rounded-xl text-center text-amber-700">
-              Viola ({vaDesks * 2}名)
-            </div>
-            <div className="bg-amber-50 border border-amber-200 px-3 py-2 rounded-xl text-center text-amber-700">
-              Cello ({vcDesks * 2}名)
-            </div>
-          </div>
-
-          {/* 2層目: 木管楽器 (ひな壇1段目: 高20cm) */}
-          <div className="w-4/5 bg-blue-50 border border-blue-200 py-2 rounded-xl text-center text-[11px] font-bold text-blue-700 shadow-sm">
-            【ひな壇 1段目 H=20cm】 木管パート ({woodwindsCount}名 / Fl, Ob, Cl, Fg)
-          </div>
-
-          {/* 3層目: 金管楽器 ＆ コントラバス (ひな壇2段目: 高40cm) */}
-          <div className="w-11/12 flex justify-between items-center gap-2 text-[11px] font-bold">
-            <div className="bg-amber-50 border border-amber-200 py-2 px-6 rounded-xl text-center text-amber-700 flex-1">
-              【ひな壇 2段目 H=40cm】 金管パート ({brassCount}名 / Hr, Tp, Tb, Tuba)
-            </div>
-            <div className="bg-amber-50 border border-amber-200 py-2 px-4 rounded-xl text-center text-amber-700">
-              CB ({cbDesks * 2}名)
-            </div>
-          </div>
-
-          {/* 4層目: 打楽器・ティンパニ (ひな壇3段目: 高60cm) */}
-          <div className="w-3/5 bg-purple-50 border border-purple-200 py-2 rounded-xl text-center text-[11px] font-bold text-purple-700 shadow-sm">
-            【ひな壇 3段目 H=60cm】 ティンパニ ＆ 打楽器 ({percussionCount}名)
-          </div>
-        </div>
+      {/* AI舞台配置プランナーキャンバス */}
+      <div>
+        <StageLayoutCanvas
+          woodwindsCount={woodwindsCount}
+          brassCount={brassCount}
+          percussionCount={percussionCount}
+          vn1Desks={vn1Desks}
+          vn2Desks={vn2Desks}
+          vaDesks={vaDesks}
+          vcDesks={vcDesks}
+          cbDesks={cbDesks}
+        />
       </div>
     </div>
   );
