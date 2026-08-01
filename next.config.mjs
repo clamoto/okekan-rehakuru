@@ -4,9 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // GitHub Pages サブディレクトリ対応 (リポジトリ名が okekan-rehakuru の場合)
-  basePath: process.env.NODE_ENV === 'production' ? '/okekan-rehakuru' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/okekan-rehakuru/' : '',
+  // GitHub Actions (configure-pages) 自動設定対応
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
 };
 
 export default nextConfig;
