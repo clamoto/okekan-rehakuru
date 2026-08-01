@@ -24,18 +24,18 @@ export default function TimelineGenerator() {
   ];
 
   return (
-    <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div>
-          <div className="inline-flex items-center gap-1.5 bg-blue-500/10 text-blue-400 text-xs font-bold px-3 py-1 rounded-full mb-2 border border-blue-500/20">
+          <div className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full mb-2 border border-blue-200">
             <Clock className="w-3.5 h-3.5" /> 当日タイムスケジュール自動生成
           </div>
-          <h2 className="text-xl font-bold text-white">演奏会・ゲネプロ 当日進行表</h2>
+          <h2 className="text-xl font-bold text-slate-900">演奏会・ゲネプロ 当日進行表</h2>
         </div>
 
         <button
           onClick={() => alert('タイムスケジュールPDFを出力しました。')}
-          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg transition"
+          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-slate-900 font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition"
         >
           <Download className="w-4 h-4" />
           進行表PDFをダウンロード
@@ -43,33 +43,33 @@ export default function TimelineGenerator() {
       </div>
 
       {/* 設定パラメータ */}
-      <div className="bg-slate-950/60 p-4 rounded-xl border border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+      <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
         <div>
-          <label className="text-slate-400 block mb-1 font-semibold">開場時間 (Doors Open)</label>
+          <label className="text-slate-600 block mb-1 font-semibold">開場時間 (Doors Open)</label>
           <input
             type="text"
             value={doorsOpenTime}
             onChange={(e) => setDoorsOpenTime(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white font-mono"
+            className="w-full bg-white border border-slate-300 rounded-lg p-2 text-slate-900 font-mono"
           />
         </div>
 
         <div>
-          <label className="text-slate-400 block mb-1 font-semibold">開演時間 (Concert Start)</label>
+          <label className="text-slate-600 block mb-1 font-semibold">開演時間 (Concert Start)</label>
           <input
             type="text"
             value={showStartTime}
             onChange={(e) => setShowStartTime(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white font-mono"
+            className="w-full bg-white border border-slate-300 rounded-lg p-2 text-slate-900 font-mono"
           />
         </div>
 
         <div>
-          <label className="text-slate-400 block mb-1 font-semibold">休憩時間</label>
+          <label className="text-slate-600 block mb-1 font-semibold">休憩時間</label>
           <select
             value={intermissionMinutes}
             onChange={(e) => setIntermissionMinutes(Number(e.target.value))}
-            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white font-mono"
+            className="w-full bg-white border border-slate-300 rounded-lg p-2 text-slate-900 font-mono"
           >
             <option value={15}>15 分間</option>
             <option value={20}>20 分間</option>
@@ -78,31 +78,31 @@ export default function TimelineGenerator() {
       </div>
 
       {/* タイムラインリスト */}
-      <div className="space-y-3 relative before:absolute before:inset-0 before:left-3 before:w-0.5 before:bg-slate-800 pl-8">
+      <div className="space-y-3 relative before:absolute before:inset-0 before:left-3 before:w-0.5 before:bg-slate-100 pl-8">
         {timelineItems.map((item, idx) => (
           <div
             key={idx}
-            className="relative bg-slate-950/60 border border-slate-800/80 p-4 rounded-xl transition hover:border-slate-700"
+            className="relative bg-slate-50 border border-slate-200 p-4 rounded-xl transition hover:border-slate-300"
           >
             <div className="absolute -left-8 top-4 w-3.5 h-3.5 rounded-full bg-blue-500 ring-4 ring-slate-900"></div>
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <span className="font-mono text-xs font-bold text-blue-400">{item.time}</span>
+              <span className="font-mono text-xs font-bold text-blue-700">{item.time}</span>
               <span
                 className={`text-[10px] px-2 py-0.5 rounded font-bold w-fit ${
                   item.category === 'event'
-                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                    ? 'bg-amber-500/20 text-amber-700 border border-amber-500/30'
                     : item.category === 'practice'
-                    ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
-                    : 'bg-slate-800 text-slate-400'
+                    ? 'bg-purple-500/20 text-blue-700 border border-blue-200'
+                    : 'bg-slate-100 text-slate-600'
                 }`}
               >
                 {item.category === 'event' ? '本番 / 開場' : item.category === 'practice' ? 'ゲネプロ' : '設営・準備'}
               </span>
             </div>
 
-            <h4 className="text-sm font-bold text-white mt-1">{item.title}</h4>
-            <p className="text-xs text-slate-400 mt-0.5">{item.desc}</p>
+            <h4 className="text-sm font-bold text-slate-900 mt-1">{item.title}</h4>
+            <p className="text-xs text-slate-600 mt-0.5">{item.desc}</p>
           </div>
         ))}
       </div>

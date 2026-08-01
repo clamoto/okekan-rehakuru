@@ -9,8 +9,6 @@ import {
   HelpCircle,
   UserPlus,
   AlertTriangle,
-  ChevronDown,
-  ChevronUp,
   Filter
 } from 'lucide-react';
 
@@ -123,15 +121,15 @@ export default function AttendanceDashboard({
     <div className="space-y-6">
       {/* 自分の出欠変更カード */}
       {myAttendance && (
-        <div className="bg-gradient-to-r from-blue-950/70 via-slate-900 to-indigo-950/70 border border-blue-500/30 rounded-2xl p-5 shadow-lg">
+        <div className="bg-blue-50/80 border border-blue-200 rounded-2xl p-5 shadow-sm">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-blue-400 mb-1">
+              <div className="flex items-center gap-2 text-xs font-semibold text-blue-700 mb-1">
                 <span>あなたの出欠登録</span>
-                <span className="text-slate-500">•</span>
+                <span className="text-slate-400">•</span>
                 <span>{myAttendance.part}</span>
               </div>
-              <h3 className="text-lg font-bold text-white">{myAttendance.full_name} さんのステータス</h3>
+              <h3 className="text-base font-bold text-slate-900">{myAttendance.full_name} さんのステータス</h3>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
@@ -139,8 +137,8 @@ export default function AttendanceDashboard({
                 onClick={() => handleMyStatusChange('attending')}
                 className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
                   myAttendance.status === 'attending'
-                    ? 'bg-emerald-600 text-white ring-2 ring-emerald-400'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    ? 'bg-emerald-600 text-white'
+                    : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
                 <CheckCircle2 className="w-4 h-4" />
@@ -151,8 +149,8 @@ export default function AttendanceDashboard({
                 onClick={() => handleMyStatusChange('late')}
                 className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
                   myAttendance.status === 'late'
-                    ? 'bg-amber-600 text-white ring-2 ring-amber-400'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    ? 'bg-amber-500 text-white'
+                    : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
                 <Clock className="w-4 h-4" />
@@ -163,8 +161,8 @@ export default function AttendanceDashboard({
                 onClick={() => handleMyStatusChange('absent')}
                 className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
                   myAttendance.status === 'absent'
-                    ? 'bg-rose-600 text-white ring-2 ring-rose-400'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    ? 'bg-rose-600 text-white'
+                    : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
                 <XCircle className="w-4 h-4" />
@@ -175,8 +173,8 @@ export default function AttendanceDashboard({
                 onClick={() => handleMyStatusChange('undecided')}
                 className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
                   myAttendance.status === 'undecided'
-                    ? 'bg-slate-600 text-white ring-2 ring-slate-400'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    ? 'bg-slate-700 text-white'
+                    : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
                 <HelpCircle className="w-4 h-4" />
@@ -188,29 +186,29 @@ export default function AttendanceDashboard({
       )}
 
       {/* サマリーダッシュボードカード */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
           <div>
-            <span className="text-xs font-semibold text-slate-400">リアルタイム集計</span>
-            <h2 className="text-xl font-bold text-white">団員・パート別出欠確認</h2>
+            <span className="text-xs font-medium text-slate-500">リアルタイム集計</span>
+            <h2 className="text-xl font-bold text-slate-900">団員・パート別出欠確認</h2>
           </div>
 
-          <div className="flex items-center gap-4 text-xs">
-            <div className="flex items-center gap-2 bg-slate-950 px-3 py-2 rounded-xl border border-slate-800">
-              <span className="text-slate-400">出席率:</span>
-              <span className="text-emerald-400 font-extrabold text-sm">{attendancePercentage}%</span>
+          <div className="flex flex-wrap items-center gap-3 text-xs">
+            <div className="flex items-center gap-2 bg-slate-100 px-3 py-2 rounded-xl border border-slate-200">
+              <span className="text-slate-600">出席率:</span>
+              <span className="text-emerald-600 font-extrabold text-base">{attendancePercentage}%</span>
             </div>
-            <div className="flex items-center gap-3">
-              <span className="text-emerald-400 font-semibold flex items-center gap-1">
+            <div className="flex items-center gap-3 font-semibold">
+              <span className="text-emerald-700 flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5" /> 出席 {attendingCount}
               </span>
-              <span className="text-amber-400 font-semibold flex items-center gap-1">
+              <span className="text-amber-700 flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5" /> 遅刻 {lateCount}
               </span>
-              <span className="text-rose-400 font-semibold flex items-center gap-1">
+              <span className="text-rose-700 flex items-center gap-1">
                 <XCircle className="w-3.5 h-3.5" /> 欠席 {absentCount}
               </span>
-              <span className="text-slate-400 font-semibold flex items-center gap-1">
+              <span className="text-slate-500 flex items-center gap-1">
                 <HelpCircle className="w-3.5 h-3.5" /> 未定 {undecidedCount}
               </span>
             </div>
@@ -219,29 +217,29 @@ export default function AttendanceDashboard({
 
         {/* 欠席発生時の「リハクルでエキストラ手配」ハイライトバナー */}
         {absentCount > 0 && (
-          <div className="mt-6 bg-gradient-to-r from-orange-950/60 via-amber-950/40 to-slate-900 border border-orange-500/40 rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-lg">
+          <div className="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm">
             <div className="flex items-start gap-3">
-              <div className="bg-orange-500/20 text-orange-400 p-2 rounded-lg mt-0.5">
+              <div className="bg-amber-100 text-amber-800 p-2 rounded-lg mt-0.5">
                 <AlertTriangle className="w-5 h-5" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-bold text-white text-sm">
+                  <span className="font-bold text-slate-900 text-sm">
                     {absentCount}名の欠席が発生しています
                   </span>
-                  <span className="bg-orange-500/20 text-orange-300 text-[10px] px-2 py-0.5 rounded font-mono font-bold">
+                  <span className="bg-amber-200 text-amber-900 text-[10px] px-2 py-0.5 rounded font-bold">
                     リハクル連携
                   </span>
                 </div>
-                <p className="text-xs text-slate-300 mt-1">
-                  欠席パート: {Object.entries(absentPartMap).map(([p, c]) => `${p} (${c}名)`).join(', ')}。即座にリハクルで条件に合うエキストラを検索・オファー可能です。
+                <p className="text-xs text-slate-600 mt-1">
+                  欠席パート: {Object.entries(absentPartMap).map(([p, c]) => `${p} (${c}名)`).join(', ')}。リハクルで条件に合うエキストラをかんたんに手配できます。
                 </p>
               </div>
             </div>
 
             <Link
               href={`/rehakuru?schedule_id=${scheduleId}&parts=${Object.keys(absentPartMap).join(',')}`}
-              className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg shadow-orange-500/25 transition whitespace-nowrap"
+              className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition whitespace-nowrap"
             >
               <UserPlus className="w-4 h-4" />
               リハクルでエキストラを探す
@@ -251,15 +249,15 @@ export default function AttendanceDashboard({
 
         {/* セクションフィルタータブ */}
         <div className="flex items-center gap-2 mt-6 overflow-x-auto pb-2">
-          <Filter className="w-4 h-4 text-slate-500 mr-1 shrink-0" />
+          <Filter className="w-4 h-4 text-slate-400 mr-1 shrink-0" />
           {sectionsMap.map((sec) => (
             <button
               key={sec.key}
               onClick={() => setSelectedSection(sec.key)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition ${
                 selectedSection === sec.key
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'bg-slate-800/80 text-slate-400 hover:text-white hover:bg-slate-800'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'bg-slate-100 text-slate-600 hover:text-slate-900 hover:bg-slate-200'
               }`}
             >
               {sec.label}
@@ -268,18 +266,18 @@ export default function AttendanceDashboard({
         </div>
 
         {/* 出欠一覧テーブル / リスト */}
-        <div className="mt-4 border border-slate-800 rounded-xl overflow-hidden">
+        <div className="mt-4 border border-slate-200 rounded-xl overflow-hidden">
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="bg-slate-950/80 text-slate-400 border-b border-slate-800">
+              <tr className="bg-slate-100 text-slate-600 border-b border-slate-200">
                 <th className="p-3 font-semibold">パート</th>
                 <th className="p-3 font-semibold">氏名</th>
                 <th className="p-3 font-semibold">出欠ステータス</th>
                 <th className="p-3 font-semibold">連絡事項・理由</th>
-                <th className="p-3 font-semibold text-right">エキストラ手配導線</th>
+                <th className="p-3 font-semibold text-right">エキストラ手配</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 bg-slate-900/40">
+            <tbody className="divide-y divide-slate-200 bg-white">
               {filteredAttendances.map((item) => {
                 const isAbsent = item.status === 'absent';
                 const isLate = item.status === 'late' || item.status === 'early_leave';
@@ -288,55 +286,55 @@ export default function AttendanceDashboard({
                 return (
                   <tr
                     key={item.id}
-                    className={`hover:bg-slate-800/40 transition ${
-                      isAbsent ? 'bg-rose-950/10' : ''
+                    className={`hover:bg-slate-50 transition ${
+                      isAbsent ? 'bg-rose-50/50' : ''
                     }`}
                   >
-                    <td className="p-3 font-bold text-slate-200">{item.part}</td>
-                    <td className="p-3 text-slate-300 flex items-center gap-2">
+                    <td className="p-3 font-bold text-slate-900">{item.part}</td>
+                    <td className="p-3 text-slate-800 flex items-center gap-2">
                       <span>{item.full_name}</span>
                       {item.user_id === myUserId && (
-                        <span className="bg-blue-500/20 text-blue-400 text-[10px] px-1.5 py-0.5 rounded">
+                        <span className="bg-blue-100 text-blue-800 text-[10px] font-bold px-1.5 py-0.5 rounded">
                           あなた
                         </span>
                       )}
                     </td>
                     <td className="p-3">
                       {isAttending && (
-                        <span className="inline-flex items-center gap-1 text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full font-semibold">
+                        <span className="inline-flex items-center gap-1 text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full font-bold">
                           <CheckCircle2 className="w-3 h-3" /> 出席
                         </span>
                       )}
                       {isLate && (
-                        <span className="inline-flex items-center gap-1 text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 rounded-full font-semibold">
+                        <span className="inline-flex items-center gap-1 text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full font-bold">
                           <Clock className="w-3 h-3" /> 遅刻・早退
                         </span>
                       )}
                       {isAbsent && (
-                        <span className="inline-flex items-center gap-1 text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2.5 py-1 rounded-full font-semibold">
+                        <span className="inline-flex items-center gap-1 text-rose-700 bg-rose-50 border border-rose-200 px-2.5 py-1 rounded-full font-bold">
                           <XCircle className="w-3 h-3" /> 欠席
                         </span>
                       )}
                       {item.status === 'undecided' && (
-                        <span className="inline-flex items-center gap-1 text-slate-400 bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-full font-semibold">
+                        <span className="inline-flex items-center gap-1 text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-full font-bold">
                           <HelpCircle className="w-3 h-3" /> 未定
                         </span>
                       )}
                     </td>
-                    <td className="p-3 text-slate-400">
-                      {item.comment ? item.comment : <span className="text-slate-600">-</span>}
+                    <td className="p-3 text-slate-600">
+                      {item.comment ? item.comment : <span className="text-slate-400">-</span>}
                     </td>
                     <td className="p-3 text-right">
                       {isAbsent ? (
                         <Link
                           href={`/rehakuru?schedule_id=${scheduleId}&part=${encodeURIComponent(item.part)}`}
-                          className="inline-flex items-center gap-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/30 px-2.5 py-1 rounded-lg text-[11px] font-bold transition"
+                          className="inline-flex items-center gap-1 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 px-2.5 py-1 rounded-lg text-[11px] font-bold transition"
                         >
                           <UserPlus className="w-3 h-3" />
                           リハクルで募集
                         </Link>
                       ) : (
-                        <span className="text-slate-600 text-[11px]">-</span>
+                        <span className="text-slate-400 text-[11px]">-</span>
                       )}
                     </td>
                   </tr>

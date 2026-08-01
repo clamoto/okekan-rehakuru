@@ -163,60 +163,60 @@ export default function AiInspectorPlanner({
   };
 
   return (
-    <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-8">
+    <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-8">
       {/* ヘッダー */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
         <div className="flex items-center gap-3">
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3 rounded-2xl shadow-lg shadow-blue-600/30">
+          <div className="bg-blue-600 text-slate-900 p-3 rounded-2xl shadow-sm">
             <Bot className="w-6 h-6 animate-pulse" />
           </div>
           <div>
-            <div className="inline-flex items-center gap-1.5 bg-blue-500/10 text-blue-400 text-xs font-bold px-3 py-0.5 rounded-full mb-1 border border-blue-500/20">
+            <div className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-xs font-bold px-3 py-0.5 rounded-full mb-1 border border-blue-200">
               <Sparkles className="w-3.5 h-3.5" /> AIインスペクター (AIインペク)
             </div>
-            <h2 className="text-xl font-bold text-white">練習スケジュール・コマ割り 自動立案エージェント</h2>
+            <h2 className="text-xl font-bold text-slate-900">練習スケジュール・コマ割り 自動立案エージェント</h2>
           </div>
         </div>
 
-        <div className="text-xs text-slate-400 max-w-xs leading-relaxed">
+        <div className="text-xs text-slate-600 max-w-xs leading-relaxed">
           指導陣（コンマス・指揮者・講師）のフィードバックを取り込み、練習計画をリアルタイムで再最適化します。
         </div>
       </div>
 
       {/* 条件設定フォーム */}
-      <div className="bg-slate-950/70 p-5 rounded-xl border border-slate-800 space-y-4">
-        <h3 className="text-xs font-bold text-slate-300 flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-blue-400" />
+      <div className="bg-slate-50/70 p-5 rounded-xl border border-slate-200 space-y-4">
+        <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+          <Calendar className="w-4 h-4 text-blue-700" />
           演奏会パラメータ ＆ 条件入力
         </h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
           <div>
-            <label className="text-slate-400 block mb-1 font-semibold">演奏会名</label>
+            <label className="text-slate-600 block mb-1 font-semibold">演奏会名</label>
             <input
               type="text"
               value={concertTitle}
               onChange={(e) => setConcertTitle(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white"
+              className="w-full bg-white border border-slate-300 rounded-lg p-2 text-slate-900"
             />
           </div>
 
           <div>
-            <label className="text-slate-400 block mb-1 font-semibold">本番年月日</label>
+            <label className="text-slate-600 block mb-1 font-semibold">本番年月日</label>
             <input
               type="date"
               value={concertDate}
               onChange={(e) => setConcertDate(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white font-mono"
+              className="w-full bg-white border border-slate-300 rounded-lg p-2 text-slate-900 font-mono"
             />
           </div>
 
           <div>
-            <label className="text-slate-400 block mb-1 font-semibold">確保可能な練習回数</label>
+            <label className="text-slate-600 block mb-1 font-semibold">確保可能な練習回数</label>
             <select
               value={rehearsalCount}
               onChange={(e) => setRehearsalCount(Number(e.target.value))}
-              className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white font-mono"
+              className="w-full bg-white border border-slate-300 rounded-lg p-2 text-slate-900 font-mono"
             >
               <option value={4}>4 回 (直前集中)</option>
               <option value={5}>5 回 (標準)</option>
@@ -230,16 +230,16 @@ export default function AiInspectorPlanner({
           <button
             onClick={() => handleGeneratePlan(false)}
             disabled={isGenerating}
-            className="flex-1 w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs py-3 rounded-xl transition border border-slate-700"
+            className="flex-1 w-full inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs py-3 rounded-xl transition border border-slate-300"
           >
-            <Sparkles className="w-4 h-4 text-blue-400" />
+            <Sparkles className="w-4 h-4 text-blue-700" />
             基本スケジュールを自動立案
           </button>
 
           <button
             onClick={() => handleGeneratePlan(true)}
             disabled={isGenerating}
-            className="flex-1 w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:opacity-90 text-white font-bold text-xs py-3 rounded-xl shadow-lg shadow-indigo-600/30 transition"
+            className="flex-1 w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:opacity-90 text-slate-900 font-bold text-xs py-3 rounded-xl shadow-sm shadow-indigo-600/30 transition"
           >
             {isGenerating ? (
               <span className="flex items-center gap-2">
@@ -248,7 +248,7 @@ export default function AiInspectorPlanner({
               </span>
             ) : (
               <>
-                <MessageSquare className="w-4 h-4 text-emerald-400" />
+                <MessageSquare className="w-4 h-4 text-emerald-700" />
                 指導陣フィードバックを反映してAI再計算・最適化
               </>
             )}
@@ -258,16 +258,16 @@ export default function AiInspectorPlanner({
 
       {/* 生成されたAIインペク練習計画ロードマップ */}
       {generatedPlan && (
-        <div className="space-y-6 pt-4 border-t border-slate-800">
+        <div className="space-y-6 pt-4 border-t border-slate-200">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-700" />
               AIインペク提案：{concertTitle} マスター練習ロードマップ ({generatedPlan.length}回)
             </h3>
 
             <button
               onClick={() => alert('オケカンのスケジュールデータベースに一括反映しました！')}
-              className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow transition"
+              className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-slate-900 font-bold text-xs px-3.5 py-2 rounded-xl shadow transition"
             >
               <CheckCircle2 className="w-3.5 h-3.5" />
               この計画を「オケカン」の日程に反映する
@@ -278,23 +278,23 @@ export default function AiInspectorPlanner({
             {generatedPlan.map((plan) => (
               <div
                 key={plan.sessionNumber}
-                className="bg-slate-950/80 border border-slate-800 rounded-2xl p-5 shadow-inner space-y-4"
+                className="bg-white border border-slate-200 rounded-2xl p-5 shadow-inner space-y-4"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800/80">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
                   <div className="flex items-center gap-3">
-                    <span className="w-7 h-7 rounded-xl bg-blue-600 text-white font-black text-xs flex items-center justify-center">
+                    <span className="w-7 h-7 rounded-xl bg-blue-600 text-slate-900 font-bold text-xs flex items-center justify-center">
                       #{plan.sessionNumber}
                     </span>
                     <div>
-                      <span className="text-xs font-mono text-blue-400 font-bold">{plan.dateStr}</span>
-                      <h4 className="text-sm font-bold text-white">{plan.focusTitle}</h4>
+                      <span className="text-xs font-mono text-blue-700 font-bold">{plan.dateStr}</span>
+                      <h4 className="text-sm font-bold text-slate-900">{plan.focusTitle}</h4>
                     </div>
                   </div>
 
                   {plan.hasExtraNeed && (
                     <Link
                       href={`/rehakuru?part=${encodeURIComponent(plan.extraPart || '')}`}
-                      className="inline-flex items-center gap-1 bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/30 px-3 py-1 rounded-lg text-xs font-bold transition w-fit"
+                      className="inline-flex items-center gap-1 bg-amber-50 hover:bg-orange-500/20 text-amber-700 border border-amber-200 px-3 py-1 rounded-lg text-xs font-bold transition w-fit"
                     >
                       <UserPlus className="w-3.5 h-3.5" />
                       {plan.extraPart} エキストラ要手配 (リハクルへ)
@@ -304,11 +304,11 @@ export default function AiInspectorPlanner({
 
                 {/* 反映された指導指示ハイライト */}
                 {plan.appliedFeedbacks && plan.appliedFeedbacks.length > 0 && (
-                  <div className="bg-purple-950/30 border border-purple-500/30 p-2.5 rounded-xl text-xs space-y-1">
-                    <span className="font-bold text-purple-300 flex items-center gap-1">
+                  <div className="bg-purple-950/30 border border-blue-200 p-2.5 rounded-xl text-xs space-y-1">
+                    <span className="font-bold text-blue-700 flex items-center gap-1">
                       <Sparkles className="w-3.5 h-3.5" /> 指導陣フィードバック自動反映項目:
                     </span>
-                    <ul className="list-disc list-inside text-slate-300 text-[11px]">
+                    <ul className="list-disc list-inside text-slate-700 text-[11px]">
                       {plan.appliedFeedbacks.map((fb, idx) => (
                         <li key={idx}>{fb}</li>
                       ))}
@@ -324,17 +324,17 @@ export default function AiInspectorPlanner({
                       className={`p-3 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-2 ${
                         slot.activity.includes('指示')
                           ? 'bg-purple-950/40 border-purple-500/40'
-                          : 'bg-slate-900/70 border-slate-800'
+                          : 'bg-slate-900/70 border-slate-200'
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="font-mono text-slate-400 font-bold w-24 shrink-0">{slot.time}</span>
+                        <span className="font-mono text-slate-600 font-bold w-24 shrink-0">{slot.time}</span>
                         <div>
-                          <span className="font-bold text-slate-200">{slot.activity}</span>
-                          <p className="text-[11px] text-slate-400">{slot.notes}</p>
+                          <span className="font-bold text-slate-800">{slot.activity}</span>
+                          <p className="text-[11px] text-slate-600">{slot.notes}</p>
                         </div>
                       </div>
-                      <span className="bg-slate-800 text-slate-300 text-[10px] font-bold px-2 py-0.5 rounded w-fit">
+                      <span className="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded w-fit">
                         対象: {slot.targetPart}
                       </span>
                     </div>
@@ -342,8 +342,8 @@ export default function AiInspectorPlanner({
                 </div>
 
                 {/* AIインペクのアドバイス */}
-                <div className="bg-blue-950/40 border border-blue-500/30 p-3 rounded-xl text-xs text-blue-300 flex items-start gap-2">
-                  <Bot className="w-4 h-4 shrink-0 text-blue-400 mt-0.5" />
+                <div className="bg-blue-950/40 border border-blue-200 p-3 rounded-xl text-xs text-blue-700 flex items-start gap-2">
+                  <Bot className="w-4 h-4 shrink-0 text-blue-700 mt-0.5" />
                   <span>{plan.aiAdvice}</span>
                 </div>
               </div>

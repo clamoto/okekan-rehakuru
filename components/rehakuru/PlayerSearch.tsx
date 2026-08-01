@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Sparkles, Car, Award, UserCheck, Search, Filter, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Car, Search, ShieldCheck } from 'lucide-react';
 
 export interface ExtraPlayer {
   id: string;
@@ -100,35 +100,35 @@ export default function PlayerSearch({
   return (
     <div className="space-y-6">
       {/* 検索フィルター */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+      <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-200">
           <div className="flex items-center gap-2">
-            <div className="bg-orange-500/10 text-orange-400 p-2 rounded-xl border border-orange-500/30">
+            <div className="bg-amber-50 text-amber-600 p-2 rounded-xl border border-amber-200">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-xs font-semibold text-orange-400">リハクル マッチング</span>
-              <h2 className="text-lg font-bold text-white">エキストラ奏者・相性スコア検索</h2>
+              <span className="text-xs font-semibold text-amber-800">リハクル マッチング</span>
+              <h2 className="text-lg font-bold text-slate-900">エキストラ奏者・相性スコア検索</h2>
             </div>
           </div>
 
-          <span className="text-xs bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800 text-slate-400 font-mono">
+          <span className="text-xs bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 text-slate-700 font-bold">
             全 {filteredPlayers.length} 名ヒット
           </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
           <div>
-            <label className="text-slate-400 block mb-1 font-semibold">パート / 楽器</label>
+            <label className="text-slate-700 block mb-1 font-bold">パート / 楽器</label>
             <div className="relative">
               <input
                 type="text"
                 placeholder="例: Oboe, Horn, Contrabass"
                 value={searchPart}
                 onChange={(e) => setSearchPart(e.target.value)}
-                className="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 pl-8 text-white"
+                className="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 pl-8 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              <Search className="w-4 h-4 text-slate-500 absolute left-2.5 top-3" />
+              <Search className="w-4 h-4 text-slate-400 absolute left-2.5 top-3" />
             </div>
           </div>
 
@@ -138,9 +138,9 @@ export default function PlayerSearch({
               id="specialInst"
               checked={requireSpecialInst}
               onChange={(e) => setRequireSpecialInst(e.target.checked)}
-              className="w-4 h-4 rounded border-slate-700 bg-slate-950 text-orange-500 focus:ring-orange-500"
+              className="w-4 h-4 rounded border-slate-300 text-amber-600 focus:ring-amber-500"
             />
-            <label htmlFor="specialInst" className="text-slate-300 font-semibold cursor-pointer">
+            <label htmlFor="specialInst" className="text-slate-700 font-medium cursor-pointer">
               特殊管所有者のみ (E.H., BassCl等)
             </label>
           </div>
@@ -151,9 +151,9 @@ export default function PlayerSearch({
               id="carAvailable"
               checked={requireCar}
               onChange={(e) => setRequireCar(e.target.checked)}
-              className="w-4 h-4 rounded border-slate-700 bg-slate-950 text-orange-500 focus:ring-orange-500"
+              className="w-4 h-4 rounded border-slate-300 text-amber-600 focus:ring-amber-500"
             />
-            <label htmlFor="carAvailable" className="text-slate-300 font-semibold cursor-pointer">
+            <label htmlFor="carAvailable" className="text-slate-700 font-medium cursor-pointer">
               車出し可能者のみ
             </label>
           </div>
@@ -164,9 +164,9 @@ export default function PlayerSearch({
               id="proOnly"
               checked={proOnly}
               onChange={(e) => setProOnly(e.target.checked)}
-              className="w-4 h-4 rounded border-slate-700 bg-slate-950 text-orange-500 focus:ring-orange-500"
+              className="w-4 h-4 rounded border-slate-300 text-amber-600 focus:ring-amber-500"
             />
-            <label htmlFor="proOnly" className="text-slate-300 font-semibold cursor-pointer">
+            <label htmlFor="proOnly" className="text-slate-700 font-medium cursor-pointer">
               プロ奏者のみ
             </label>
           </div>
@@ -178,49 +178,49 @@ export default function PlayerSearch({
         {filteredPlayers.map((player) => (
           <div
             key={player.id}
-            className="bg-slate-900/90 border border-slate-800 hover:border-orange-500/50 rounded-2xl p-6 shadow-xl transition flex flex-col justify-between space-y-4 relative overflow-hidden"
+            className="bg-white border border-slate-200 hover:border-amber-400 rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4 relative overflow-hidden"
           >
             {/* 相性スコアバッジ */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="bg-gradient-to-r from-orange-500 to-amber-600 text-white font-black text-xs px-3 py-1 rounded-lg shadow-md shadow-orange-500/20">
-                  相性スコア {player.compatibilityScore}点
+                <span className="bg-amber-500 text-white font-bold text-xs px-3 py-1 rounded-lg shadow-sm">
+                  相性 {player.compatibilityScore}点
                 </span>
                 {player.isPro ? (
-                  <span className="bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[10px] font-bold px-2 py-0.5 rounded">
+                  <span className="bg-purple-50 text-purple-700 border border-purple-200 text-[10px] font-bold px-2 py-0.5 rounded">
                     プロ奏者
                   </span>
                 ) : (
-                  <span className="bg-slate-800 text-slate-400 text-[10px] font-bold px-2 py-0.5 rounded">
+                  <span className="bg-slate-100 text-slate-600 border border-slate-200 text-[10px] font-bold px-2 py-0.5 rounded">
                     アマチュア
                   </span>
                 )}
               </div>
 
               {player.stripeConnected && (
-                <span className="inline-flex items-center gap-1 text-emerald-400 text-[11px] font-semibold bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
-                  <ShieldCheck className="w-3.5 h-3.5" /> Stripe Connect 済
+                <span className="inline-flex items-center gap-1 text-emerald-700 text-[11px] font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                  <ShieldCheck className="w-3.5 h-3.5" /> Stripe連携済
                 </span>
               )}
             </div>
 
             {/* 奏者基本情報 */}
             <div>
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+              <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
                 {player.fullName}
-                <span className="text-xs font-normal text-slate-400">({player.part})</span>
+                <span className="text-xs font-normal text-slate-500">({player.part})</span>
               </h3>
 
-              <p className="text-xs text-slate-300 mt-2 leading-relaxed">{player.bio}</p>
+              <p className="text-xs text-slate-600 mt-2 leading-relaxed">{player.bio}</p>
 
               {/* 特殊管 ＆ 車出し情報 */}
               <div className="mt-4 space-y-2 text-xs">
                 {player.instrumentsOwned.length > 0 && (
                   <div className="flex items-start gap-1.5">
-                    <span className="text-amber-400 font-bold shrink-0">所有特殊管:</span>
+                    <span className="text-amber-700 font-bold shrink-0">所有特殊管:</span>
                     <div className="flex flex-wrap gap-1">
                       {player.instrumentsOwned.map((inst, idx) => (
-                        <span key={idx} className="bg-slate-950 text-amber-300 border border-amber-500/20 px-2 py-0.5 rounded text-[11px]">
+                        <span key={idx} className="bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 rounded text-[11px] font-medium">
                           {inst}
                         </span>
                       ))}
@@ -229,29 +229,29 @@ export default function PlayerSearch({
                 )}
 
                 {player.hasCar && (
-                  <div className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+                  <div className="flex items-center gap-1.5 text-emerald-700 font-bold">
                     <Car className="w-3.5 h-3.5" />
                     <span>車出し・大型楽器運搬可能</span>
                   </div>
                 )}
 
-                <div className="text-slate-400 text-[11px]">
-                  <span className="font-semibold text-slate-300">師事情報:</span> {player.teachers}
+                <div className="text-slate-600 text-[11px]">
+                  <span className="font-semibold text-slate-800">師事情報:</span> {player.teachers}
                 </div>
-                <div className="text-slate-400 text-[11px]">
-                  <span className="font-semibold text-slate-300">過去共演指揮者:</span> {player.pastConductors.join(', ')}
+                <div className="text-slate-600 text-[11px]">
+                  <span className="font-semibold text-slate-800">過去共演指揮者:</span> {player.pastConductors.join(', ')}
                 </div>
               </div>
             </div>
 
             {/* オファー作成ボタン */}
-            <div className="pt-4 border-t border-slate-800">
+            <div className="pt-4 border-t border-slate-200">
               <button
                 onClick={() => onSelectPlayer(player)}
-                className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg shadow-orange-500/25 transition"
+                className="w-full inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm transition"
               >
                 <Sparkles className="w-4 h-4" />
-                オファー提出 ＆ Stripe仮払いへ進む
+                オファー提出 ＆ 仮払いへ進む
               </button>
             </div>
           </div>
